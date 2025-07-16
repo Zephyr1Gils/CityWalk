@@ -1,0 +1,231 @@
+🧠 Complete Cursor Prompt for Safety App Development
+Build a cross-platform mobile application using React Native (or Flutter) designed for women worldwide, focused on personal safety and emergency assistance.
+
+✅ CORE FEATURES
+🚨 EMERGENCY TRIGGER (Voice + Button)
+Detect spoken keyword (e.g. “Help me”) using speech-to-text API.
+
+Include large SOS button, always visible.
+
+On trigger:
+
+Start video recording.
+
+Save encrypted video locally.
+
+Upload encrypted video to object storage (MinIO, S3, GCP).
+
+Auto-call local emergency number based on geolocation.
+
+Share real-time GPS with ICE contacts.
+
+Notify user that recording has started.
+
+Allow review/deletion of recorded videos.
+
+📞 EMERGENCY CONTACTS
+Add phone numbers and messaging contacts (WhatsApp, Telegram, Messenger).
+
+Integrate message-sending APIs for those platforms.
+
+Ads shown when configuring ICE contacts (skippable after 5s).
+
+🗺️ SAFE EXPLORER AREA
+OpenStreetMap-based live map.
+
+Show:
+
+Active users nearby (anonymized).
+
+User-triggered alerts.
+
+Crime hotspots (external datasets).
+
+Requires watching a skippable ad to enter.
+
+🛣️ SAFE ROUTE PLANNING
+Suggest routes avoiding unsafe areas.
+
+Use data from:
+
+User alerts
+
+Crime datasets
+
+Show danger zones as heatmaps.
+
+Display safety messages like:
+“This route is 4 minutes longer but 86% safer.”
+
+🔴 REAL-TIME DATA
+WebSockets for live events while app is active.
+
+Push notifications when backgrounded.
+
+Auto-disconnect sockets in background to save battery.
+
+📣 PUSH NOTIFICATIONS
+Mandatory, non-optional.
+
+Alerts for:
+
+Local incidents
+
+Changes in frequently visited zones
+
+🔐 SECURITY & PRIVACY
+GDPR-compliant.
+
+Encrypted video & data in transit and at rest.
+
+Users can:
+
+Export or delete their data.
+
+APIs secured by:
+
+JWT/OAuth
+
+RBAC
+
+HTTPS, rate limiting, sanitization
+
+Expose all data via API for BI/reporting/auditing.
+
+💰 MONETIZATION
+Core safety features (SOS, alerts, voice trigger) must be ad-free.
+
+Ads only shown:
+
+In Safe Explorer
+
+During ICE setup
+
+Skippable after 5 seconds.
+
+Ads must be family-friendly and never explicit.
+
+👣 USER JOURNEY & SCREEN FLOWS
+1. 🔑 ONBOARDING & AUTHENTICATION
+Welcome sliders (max 3):
+
+“Because walking alone shouldn’t be scary.”
+
+“One word. One button. Help is on the way.”
+
+“You control your data. Always.”
+
+Auth options:
+
+Facebook, TikTok, Google, X, Email+Password
+
+Guest mode (limited features, no alert triggers)
+
+Request permissions (camera, mic, GPS, push)
+
+2. ⚙️ SETUP: SECURITY CONFIGURATION
+Add ICE contacts (phone & messengers)
+↳ show 5s skippable ad before saving
+
+Choose default or custom voice keyword (“Help me”)
+
+ON/OFF toggle with visual feedback
+
+Trigger a test alert (simulated) to reassure users
+
+3. 🏠 MAIN DASHBOARD
+Always-visible pulsating SOS button (floating or bottom center)
+
+Voice keyword status indicator
+
+Quick links to:
+
+Safe Explorer
+
+Safe Route
+
+Mini-map (user location, red zones, recent alerts)
+
+Video history (recorded alerts)
+
+Emergency trigger = start video + alert + call + location share
+
+4. 🎥 VIDEO HISTORY
+List of videos with:
+
+Thumbnail
+
+Timestamp
+
+Options: Play, Delete, Download
+
+5. 🗺️ SAFE EXPLORER
+Show OpenStreetMap view
+
+Display:
+
+Active users radius (500m–5km)
+
+Recent alerts
+
+Public crime heatmap
+
+Refresh button and legend
+
+Skippable ad (5s) before entry
+
+6. 🛣️ SAFE ROUTE PLANNER
+Address input (from/to)
+
+Multiple routes:
+
+🟥 Default
+
+🟩 Safer (avoids risky zones)
+
+Show:
+
+Map
+
+Route steps
+
+Clear safety message
+
+7. ⚙️ SETTINGS & ACCOUNT
+Edit ICE contacts
+
+Manage voice keyword
+
+Alert history
+
+Export/Delete personal data
+
+Toggle non-critical notifications
+
+GDPR & privacy settings
+
+🎨 UI & UX DESIGN SYSTEM
+🌈 Colors
+| Role | Color | Use Case |
+|-----------|-----------|--------------------------------------|\n| Primary | #FFD6E8 | Surfaces, illustrations |\n| Secondary | #B8E1FF | Decorative, low-contrast |\n| Accent | #C8F2DC | Buttons, interactive elements |\n| Danger | #FF4F4F | SOS button, alerts |\n| BG Light | #F8FAFC | Default background |\n| BG Dark | #1A1C1E | Dark mode background |\n\n### 🔠 Typography\n- Font: Inter (fallback system-ui)\n- H1: 24pt, Bold\n- H2: 20pt, SemiBold\n- Body: 16pt, Regular\n- Label: 14pt, Medium\n- CTA: 16pt, Medium (Accent color)\n\n### 📱 UI Components\n- SOS Button: 240x240, #FF4F4F background, white bold text, pulsating animation\n- Inputs: White background, 1px light grey border, 12px radius\n- Modals: Flat white background, soft shadow, main action button visible\n- Cards: White or #F8FAFC background, soft border, ample spacing\n- Map View: Heatmap overlays, icons for alerts & users, draggable & smooth\n- Notifications: In-app or system alerts for nearby incidents or dangerous zones\n\n### 🔐 Accessibility\n- All text: legible at 16pt+ under stress\n- Color contrast WCAG AA+ compliant\n- Full screen reader support (ARIA)\n- Haptic + visual feedback on SOS trigger\n- Timeout + cancel slide on SOS (3s)\n\n---
+
+🔧 TECH STACK (SUGGESTED)
+Frontend: React Native (preferred), Flutter optional
+
+Voice Detection: Speech-to-text APIs (free/low-cost)
+
+Video Recording: Native camera API
+
+Video Storage: Encrypted local + MinIO / AWS S3 / GCS
+
+Maps: OpenStreetMap + GraphHopper / Valhalla
+
+Backend: Node.js + Express or FastAPI
+
+Database: Firebase or Supabase
+
+Real-Time: WebSockets (Socket.IO or native)
+
+Notifications: Firebase Cloud Messaging
+
+Security: JWT, OAuth2, RBAC, HTTPS, input validation, rate limiting
